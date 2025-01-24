@@ -4,11 +4,9 @@ import com.example.dto.CustomersDTO;
 import jooqdata.tables.Customer;
 import org.jooq.DSLContext;
 import org.jooq.Record;
-import org.jooq.Result;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 import static jooqdata.tables.Customer.CUSTOMER;
 
@@ -20,7 +18,7 @@ public class CustomerService {
         this.dsl = dsl;
     }
 
-    // Метод для добавления клиента
+
     public void addCustomer(CustomersDTO customerDTO) {
         Customer customer = jooqdata.Tables.CUSTOMER;
         dsl.insertInto(customer)
@@ -37,7 +35,7 @@ public class CustomerService {
                 .execute();
     }
 
-    // Метод для получения всех клиентов
+
     public List<CustomersDTO> getAllCustomers() {
         return dsl.selectFrom(CUSTOMER)
                 .fetch()
@@ -65,7 +63,7 @@ public class CustomerService {
                 .fetchOne();
 
         if (record == null) {
-            return null; // Если клиент не найден, возвращаем null
+            return null;
         }
 
         CustomersDTO dto = new CustomersDTO();
@@ -84,7 +82,7 @@ public class CustomerService {
     }
 
 
-    // Метод для обновления клиента по CUSTOMER_CODE_MAIN
+
     public void updateCustomerByCodeMain(String customerCodeMain, CustomersDTO customerDTO) {
         Customer customer = jooqdata.Tables.CUSTOMER;
         int updated = dsl.update(customer)
@@ -106,7 +104,7 @@ public class CustomerService {
         }
     }
 
-    // Метод для удаления клиента по CUSTOMER_CODE_MAIN
+
     public void deleteCustomerByCodeMain(String customerCodeMain) {
         Customer customer = jooqdata.Tables.CUSTOMER;
         int deleted = dsl.deleteFrom(customer)

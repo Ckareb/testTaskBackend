@@ -103,7 +103,6 @@ public class CustomersDTO {
         validateTypeConsistency();
     }
 
-    // Helper methods for validation
 
     private void validateField(String field, String errorMessage) {
         if (field == null || field.isEmpty()) {

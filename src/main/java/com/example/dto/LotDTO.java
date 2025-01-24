@@ -1,20 +1,17 @@
 package com.example.dto;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 
 public class LotDTO {
     private String lotName;
-    private String customerCode;  // Ссылка на контрагента
-    private BigDecimal price;     // Начальная стоимость
-    private String currencyCode;  // Валюта
-    private String ndsRate;       // НДС
-    private String placeDelivery; // Грузополучатель
-    private LocalDateTime dateDelivery;  // Дата доставки
+    private String customerCode;
+    private BigDecimal price;
+    private String currencyCode;
+    private String ndsRate;
+    private String placeDelivery;
+    private LocalDateTime dateDelivery;
 
-    // Getter и Setter для полей
 
     public String getLotName() {
         return lotName;
@@ -80,15 +77,6 @@ public class LotDTO {
         }
         this.dateDelivery = dateDelivery;
     }
-
-    // Дополнительно: метод для установки из Instant
-    public void setDateDeliveryFromTimestamp(long timestamp) {
-        this.dateDelivery = LocalDateTime.ofInstant(
-                Instant.ofEpochMilli(timestamp), ZoneId.of("UTC")
-        );
-    }
-
-    // Helper methods for validation
 
     private void validateField(Object field, String errorMessage) {
         if (field == null || (field instanceof String && ((String) field).isEmpty())) {

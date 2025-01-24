@@ -21,7 +21,7 @@ public class LotService {
         this.dsl = dsl;
     }
 
-    // Метод для добавления лота
+
     public void addLot(LotDTO lotDTO) {
         Lot lot = jooqdata.Tables.LOT;
 
@@ -36,7 +36,7 @@ public class LotService {
                 .execute();
     }
 
-    // Метод для получения всех лотов
+
     public List<LotDTO> getAllLots() {
         return dsl.selectFrom(LOT)
                 .fetch()
@@ -53,7 +53,7 @@ public class LotService {
                 });
     }
 
-    // Метод для получения лотов по имени
+
     public List<LotDTO> getLotsByName(String lotName) {
         Lot lot = jooqdata.Tables.LOT;
 
@@ -75,7 +75,7 @@ public class LotService {
         }).collect(Collectors.toList());
     }
 
-    // Метод для обновления лота по имени
+
     public void updateLotByName(String lotName, LotDTO lotDTO) {
         Lot lot = jooqdata.Tables.LOT;
 
@@ -95,7 +95,7 @@ public class LotService {
         }
     }
 
-    // Метод для удаления лота по имени
+
     public void deleteLotByName(String lotName) {
         Lot lot = jooqdata.Tables.LOT;
 
